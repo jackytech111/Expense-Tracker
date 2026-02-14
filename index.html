@@ -11,8 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     
      <!-- Styles -->
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link  href="./css/styles.css" rel="stylesheet">
 
 </head>
 <body>
@@ -21,16 +20,16 @@
 
         <div class="balance-container">
             <h2>Số dư</h2>
-            <div id="balance">0VND</div>
+            <div id="balance">0 VND</div>
 
             <div class="summary">
                 <div class="income">
-                    <h3>Income</h3>
-                    <p id="income-amount">0VND</p>
+                    <h3>Thu nhập</h3>
+                    <p id="income-amount">0 VND</p>
                 </div>
                 <div class="expenses">
-                    <h3>Expenses</h3>
-                    <p id="expense-amount">0VND</p>
+                    <h3>Chi tiêu</h3>
+                    <p id="expense-amount">0 VND</p>
                 </div>
             </div>
         </div>
@@ -41,8 +40,23 @@
                     <!-- Giao dịch sẽ được thêm vào đây -->
                 </ul>
             </div>
+
             <div class="form-container">
-                
+                <h2>Thêm giao dịch mới</h2>
+
+                <form  id="transaction-form">
+                    <div class="form-group">
+                        <label for="description">Mô tả</label>
+                        <input type="text" id="description" placeholder="Nhập mô tả giao dịch" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Số tiền</label>
+                        <input type="number" id="amount" placeholder="Nhập số tiền" required>
+                        <small>Dùng dấu trừ (-) để ghi chú chi tiêu</small>
+                    </div>
+
+                    <button type="submit">Thêm giao dịch</button>
+                </form>
             </div>
         </div>
     </div>
