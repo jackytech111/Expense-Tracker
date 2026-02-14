@@ -4,9 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý chi tiêu</title>
+
+    <!-- Embed Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+     <!-- Styles -->
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/styles.css">
+
 </head>
 <body>
-    <h1>Quản lý chi tiêu cá nhân</h1>
+    <div class="container">
+        <h1>Quản lý chi tiêu cá nhân</h1>
+
+        <div class="balance-container">
+            <h2>Số dư</h2>
+            <div id="balance">0VND</div>
+
+            <div class="summary">
+                <div class="income">
+                    <h3>Income</h3>
+                    <p id="income-amount">0VND</p>
+                </div>
+                <div class="expenses">
+                    <h3>Expenses</h3>
+                    <p id="expense-amount">0VND</p>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="transaction-container">
+                <h2>Giao dịch</h2>
+                <ul id="transaction-list">
+                    <!-- Giao dịch sẽ được thêm vào đây -->
+                </ul>
+            </div>
+            <div class="form-container">
+                
+            </div>
+        </div>
+    </div>
+
     <script src="./main.js"></script>
 </body>
 </html>
