@@ -1,0 +1,72 @@
+@media (max-width: 960px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  #transaction-list {
+    max-height: 320px;
+  }
+
+  .container {
+    padding: 2.8rem 2.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+    align-items: flex-start;
+  }
+
+  .container {
+    padding: 2.4rem 1.8rem;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2.4rem;
+  }
+
+  .balance-container {
+    padding: 2.2rem 1.6rem;
+  }
+
+  #balance {
+    font-size: 2.8rem;
+  }
+
+  .summary {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .income,
+  .expenses {
+    padding: 1.4rem 1.6rem;
+  }
+
+  .income p,
+  .expenses p {
+    font-size: 1.4rem;
+  }
+
+  .transaction-container,
+  .form-container {
+    padding: 1.8rem;
+  }
+
+  .transaction {
+    padding: 1.2rem 1.4rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+
+  #balance {
+    font-size: 2.4rem;
+  }
+}
