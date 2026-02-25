@@ -31,7 +31,16 @@ function addTransaction(e) {
   transactionForm.reset();
 }
 
-function formatDate(ioString) {}
+function formatDate(ioString) {
+  if (!ioString) return "Không xác định";
+  const date = new Date(ioString);
+
+  return date.toLocaleDateString("vi-VN", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+  });
+}
 
 function updateTransactionList() {
   transactionList.innerHTML = "";
