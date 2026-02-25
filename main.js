@@ -1,6 +1,6 @@
 const balance = document.getElementById("balance");
 const incomeAmount = document.getElementById("income-amount");
-const expenseAmout = document.getElementById("expense-amount");
+const expenseAmount = document.getElementById("expense-amount");
 const transactionList = document.getElementById("transaction-list");
 const transactionForm = document.getElementById("transaction-form");
 const description = document.getElementById("description");
@@ -15,6 +15,9 @@ updateSummary();
 transactionForm.addEventListener("submit", addTransaction);
 
 // Helper functions
+function saveLocalStorage() {
+  localStorage.setItem("transactions", JSON.stringify(transactions));
+}
 
 function formatDate(isoString) {
   if (!isoString) return "Không xác định";
@@ -41,6 +44,11 @@ function addTransaction(e) {
   const desc = description.value.trim();
   const amt = parseFloat(amount.value.trim());
 
+  if (!desc || isNaN(amt) || amt === 0) {
+    alert("Không hợp lệ xin vui lòng nhập lại");
+    return;
+  }
+
   transactions.push({
     id: Date.now(),
     desc,
@@ -48,7 +56,7 @@ function addTransaction(e) {
     date: new Date().toISOString(),
   });
 
-  localStorage.setItem("transactions", JSON.stringify(transactions));
+  saveLocalStorage();
   updateTransactionList();
   updateSummary();
 
@@ -57,8 +65,11 @@ function addTransaction(e) {
 
 // Delete transaction
 function deleteTransaction(id) {
+  const isConfirmed = confirm("Bạn có chắc muốn xoá giao dịch này không?");
+  if (!isConfirmed) return;
+
   transactions = transactions.filter((t) => t.id !== id);
-  localStorage.setItem("transactions", JSON.stringify(transactions));
+  saveLocalStorage();
   updateTransactionList();
   updateSummary();
 }
@@ -77,23 +88,26 @@ function updateTransactionList() {
 
 // Update summary
 function updateSummary() {
-  const income = transactions
-    .filter((t) => t.amt > 0)
-    .reduce((sum, t) => sum + t.amt, 0);
-  const expense = transactions
-    .filter((t) => t.amt < 0)
-    .reduce((sum, t) => sum + t.amt, 0);
+  let income = 0;
+  let expense = 0;
+
+  transactions.forEach((t) => {
+    if (t.amt > 0) {
+      income += t.amt;
+    } else {
+      expense += t.amt;
+    }
+  });
 
   const total = income + expense;
 
   balance.textContent = formatCurrency(total);
   balance.classList.toggle("negative", total < 0);
   incomeAmount.textContent = formatCurrency(income);
-  expenseAmout.textContent = formatCurrency(Math.abs(expense));
+  expenseAmount.textContent = formatCurrency(Math.abs(expense));
 }
 
 // Create transaction list item
-
 function createTransactionElement(transaction) {
   const li = document.createElement("li");
   li.classList.add("transaction");
