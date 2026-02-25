@@ -1,4 +1,4 @@
-# Money Tracker
+# Expense Tracker
 
 A personal finance management web app built with Vanilla JavaScript.
 
