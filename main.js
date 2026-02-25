@@ -84,7 +84,10 @@ function updateSummary() {
     .filter((t) => t.amt < 0)
     .reduce((sum, t) => sum + t.amt, 0);
 
-  balance.textContent = formatCurrency(income + expense);
+  const total = income + expense;
+
+  balance.textContent = formatCurrency(total);
+  balance.classList.toggle("negative", total < 0);
   incomeAmount.textContent = formatCurrency(income);
   expenseAmout.textContent = formatCurrency(Math.abs(expense));
 }
